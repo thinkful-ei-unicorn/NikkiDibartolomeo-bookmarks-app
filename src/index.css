@@ -1,0 +1,51 @@
+/* Stars Rating color */
+/* body {
+    background-image: url('https://cdn.wallpapersafari.com/8/75/loYT0x.jpg');
+    background-size: cover;
+} */
+
+.color2 {
+    background-color: #e07a5f;
+}
+
+a {
+    text-decoration: none;
+}
+
+.color3 {
+    background-color: #81b29a;
+}
+
+.starred {
+    color: orange;
+}
+
+.hide {
+    display: none;
+}
+
+/* Gets the New bookmark and filter button centered */
+.topButton {
+    display: flex;
+}
+
+/* adds border box */
+.box {
+    border-style: solid;
+    text-align: center;
+    margin: 10px 30px 10px 30px;
+    padding: 10px;
+}
+
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

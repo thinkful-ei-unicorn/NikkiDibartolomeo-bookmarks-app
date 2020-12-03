@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="wireframe.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+ <header>
+    <h1>My Bookmarks</h1>
+ </header>
+ <main>
+     <section class ='topButton'>
+        <div class='box'><button type="button">+ New Bookmark</button></div>
+        <div class='box'><button type="button">Filter By</button><br></div>
+     </section>
+    <div class='box'>
+        <form>
+            <label for='newBookmarkLink'>Add New Bookmark:</label><br>
+            <input type='text' id='newBookmarkLink' name='newBookmarkLink' placeholder='http://samplelink.com'>
+        </form>
+        <form>
+            <label for='bookName'></label><br>
+            <input type='text' id='bookName' name='bookName' placeholder='Name of Book'>
+        </form><br>
+        <label for="description">Description:</label><br>
+        <textarea name= "Description" rows="10" cols="30" placeholder="Type your description here"></textarea><br>
+        <span class="fa fa-star starred"></span>
+        <span class="fa fa-star starred"></span>
+        <span class="fa fa-star starred"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span> <button type="button">Submit</button>
+    </div>
+    <div class='box'>
+        <h2>Bookmarks</h2>
+    <div class='box'>
+        <h3>Title 1</h3><span class="fa fa-star starred"></span>
+        <span class="fa fa-star starred"></span>
+        <span class="fa fa-star starred"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+    </div>
+    <div class='box'>
+        <h3>Title 2</h3><span class="fa fa-star starred"></span>
+        <span class="fa fa-star starred"></span>
+        <span class="fa fa-star starred"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+    </div>
+    <div class='box'>
+        <h3>Title 3</h3><span class="fa fa-star starred"></span>
+        <span class="fa fa-star starred"></span>
+        <span class="fa fa-star starred"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+    </div>
+</div>
+
+<div class='box'>
+<form name="filterBM" id="filterBM" action="/action_page.php">
+    Filter Bookmarks: <select name="starRatings" id="starRatings">
+    <option value="one" selected="selected">1 Star</option>
+    <option value="two" selected="selected">2 Stars</option>
+    <option value="three" selected="selected">3 Stars</option>
+    <option value="four" selected="selected">4 Stars</option>
+    <option value="five" selected="selected">5 Stars</option>
+      </select>
+      <br><br>
+
+      <input type="submit" value="Submit">
+    </form>
+</div>
+ </main>
+</body>
+</html>

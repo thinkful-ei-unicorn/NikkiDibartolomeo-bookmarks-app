@@ -1,0 +1,31 @@
+
+/* Stars Rating color */
+.starred {
+    color: orange;
+}
+
+/* Gets the New bookmark and filter button centered */
+.topButton {
+    display: flex;
+}
+
+/* adds border box */
+.box {
+    border-style: solid;
+    text-align: center;
+    margin: 10px 20% 10px 20%;
+    padding: 10px;
+}
+
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
