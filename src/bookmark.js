@@ -1,13 +1,14 @@
 import $ from 'jquery';
 import store from './store.js';
 import api from './api.js';
+import './index.css';
 
 function initialView() {
   $('main').html(`<section class ='topButton'>
   <div class='box color2'><button type="button" id='newBookmark'>+ New Bookmark</button></div>
   <div class='box color2'><button type="button" id='filterBy'>Filter By</button><br></div>
 </section>
-<div class='box newBookmarkForm color3' style = 'display: none'>
+<div class='box newBookmarkForm newBookFormColor' ${store.adding? '': `style = 'display: none'`}>
   <form id ='newBookmarkForm'>
       <label for='newBookmarkLink'>Add New Bookmark:</label><br>
       <input type='text' id='newBookmarkLink' name='newBookmarkLink' placeholder='https://samplelink.com' required> <br>
@@ -15,24 +16,25 @@ function initialView() {
       <input type='text' id='bookName' name='bookName' placeholder='Name of Book' required>
   <br>
   <label for="description">Description:</label><br>
-  <textarea name= "Description" id='description' rows="10" cols="30" placeholder="Type your description here"></textarea><br>
-  <select name="rating" id="rating" required>
-  <option value="1" selected="selected">1 Star</option>
-  <option value="2" selected="selected">2 Stars</option>
-  <option value="3" selected="selected">3 Stars</option>
-  <option value="4" selected="selected">4 Stars</option>
-  <option value="5" selected="selected">5 Stars</option>
+  <textarea name= "Description" id='description' rows="10" cols="25" placeholder="Type your description here"></textarea><br>
+  <select name="rating" id="rating" label = "Rating" required>
+  <option value ='' disabled selected>Choose a Rating</option>
+  <option value="1" >1 Star</option>
+  <option value="2" >2 Stars</option>
+  <option value="3" >3 Stars</option>
+  <option value="4" >4 Stars</option>
+  <option value="5" >5 Stars</option>
   </select> 
   <input type="submit" value='submit'>
   </div></form>
   
-  <div class='box filterByForm' style = 'display: none'>
+  <div class='box filterByForm filterFormColor' ${store.filtering? '': `style = 'display: none'`}>
   <form id='starRate'>
 Filter Bookmarks: <select name="starRatings" id='rateValue'>
-<option value="1" selected="selected">1 Star</option>
-<option value="2" selected="selected">2 Stars</option>
-<option value="3" selected="selected">3 Stars</option>
-<option value="4" selected="selected">4 Stars</option>
+<option value="1" >1 Star</option>
+<option value="2" >2 Stars</option>
+<option value="3" >3 Stars</option>
+<option value="4" >4 Stars</option>
 <option value="5" selected="selected">5 Stars</option>
 </select>
 <br><br>
@@ -41,10 +43,10 @@ Filter Bookmarks: <select name="starRatings" id='rateValue'>
 </form>
 </div>
 
-<div class='box'>
+<div class='box bookmarksTileColor'>
   <h2>Bookmarks</h2>
 
-  <div class='box'> <ul id='listOfBookmarks' class="js-bookmark-list"> </ul> </div>
+   <span id='listOfBookmarks' class="js-bookmark-list"> </span>
 
 </div>
 
@@ -55,7 +57,9 @@ function newBookmark() {
   $('main').on('click', '#newBookmark', function (event) {
     event.preventDefault();
 
-    $('.newBookmarkForm').show();
+    store.adding = true;
+    render();
+
   });
 }
 
@@ -63,12 +67,13 @@ function filterBy() {
   $('main').on('click', '#filterBy', function (event) {
     event.preventDefault();
 
-    $('.filterByForm').show();
+    store.filtering = true;
+    render();
   });
 }
 
 function deleteBookmark() {
-  $('main').on('click', '#delete', function (event) {
+  $('main').on('click', '.delete', function (event) {
     event.preventDefault();
 
     let bookmarkId = getBookmarkIdFromElement(event.currentTarget);
@@ -82,13 +87,14 @@ function deleteBookmark() {
 }
 
 function expandView() {
-  $('main').on('click', '#detail', function (event) {
+  $('main').on('click', '.detail', function (event) {
     event.preventDefault();
 
     let bookmarkId = getBookmarkIdFromElement(event.currentTarget);
+    let bookmark = store.findById(bookmarkId);
     
-    // [] = attribute selector
-    $('[data-item-id="'+bookmarkId+'"] .details').toggleClass('hide');
+    bookmark.expanded = !bookmark.expanded;
+    render();
   });
 }
 
@@ -115,7 +121,7 @@ function submitNewBookmark() {
       store.addBookmark(bookmarkData);
       render();
     });
-    $('.newBookmarkForm').hide();
+    store.adding = false;
   });
 }
 
@@ -127,16 +133,18 @@ const render = function (bookmarksSaved = [...store.store.bookmarks]) {
 };
 
 function generateBookmarkElement(bookmark) {
-  let bookMarkItem = `<div class='box js-bookmark-item' data-item-id='${bookmark.id}' tabindex='0'>
-  <div>Title: </div>
-  <div>${bookmark.title}</div>
-  <div class='details hide'><div>Url: </div>
-  <div><a href="${bookmark.url}">${bookmark.url}</a></div>
-  <div>Description: </div>
-  <div>${bookmark.desc}</div></div>
-  <div>Rating: </div>
-  <div>${bookmark.rating}</div><button id='delete'>Delete</button><br>
-  <button id='detail'>details</button>
+  let bookMarkItem = `<div class='box js-bookmark-item tile' data-item-id='${bookmark.id}' tabindex='0'>
+    <div class ='V'>Title: </div>
+    <div class ='I'>${bookmark.title}</div>
+    <div ${bookmark.expanded === true? '': `style = 'display: none'`}>
+      <div class ='B'>Url: </div>
+      <div class ='G'><a href="${bookmark.url}">${bookmark.url}</a></div>
+      <div class ='Y'>Description: </div>
+      <div class ='O'>${bookmark.desc}</div>
+    </div>
+    <div class ='R'>Rating: ${bookmark.rating}</div>
+    <button class='delete'>Delete</button><br>
+    <button class='detail'>details</button>
   </div>
   `;
   return bookMarkItem;

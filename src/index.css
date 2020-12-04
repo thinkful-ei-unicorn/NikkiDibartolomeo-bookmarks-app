@@ -1,19 +1,74 @@
 /* Stars Rating color */
-/* body {
-    background-image: url('https://cdn.wallpapersafari.com/8/75/loYT0x.jpg');
-    background-size: cover;
-} */
+body {
+    background-color: #ffc6ff;
+}
+
+.bookmarksTileColor {
+    background-color: #caffbf;
+}
+
+.tile {
+    background-color: #ffffff;
+}
 
 .color2 {
-    background-color: #e07a5f;
+    background-color: #fffffc;
+}
+
+.R {
+    background-color: #ffadad;
+    border-radius: 25px;
+}
+
+.O {
+    background-color: #ffd6a5;
+    border-radius: 25px;
+}
+
+.Y {
+    background-color: #fdffb6;
+    border-radius: 25px;
+}
+
+.G {
+    background-color: #caffbf;
+    border-radius: 25px;
+}
+
+.B {
+    background-color: #9bf6ff;
+    border-radius: 25px;
+}
+
+.I {
+    background-color: #a0c4ff;
+    border-radius: 25px;
+}
+
+.V {
+    background-color: #bdb2ff;
+    border-radius: 25px;
+}
+
+.filterFormColor {
+    background-color: #9bf6ff;
 }
 
 a {
     text-decoration: none;
 }
 
-.color3 {
-    background-color: #81b29a;
+button.delete {
+    background-color: #ffadad;
+}
+
+button.detail {
+    background-color: #caffbf;
+}
+
+
+.newBookFormColor {
+    background-color: #fdffb6;
 }
 
 .starred {

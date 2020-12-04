@@ -3,6 +3,7 @@ const store = {
     
   ],
   adding: false,
+  filtering: false,
   error: null,
   filter: 0,
 };
